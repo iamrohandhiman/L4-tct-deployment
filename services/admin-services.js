@@ -1,6 +1,5 @@
 import { AdminCredentials } from "../model/AdminCredentials.js";
-import { PartnerCredentials } from "../model/PartnerCredentials.js";
-import PartnerDetails from "../model/PartnerDetails";
+
 
 export const saveAdminCredentials = async (data) => {
   try {
