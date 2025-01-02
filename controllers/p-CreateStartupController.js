@@ -2,7 +2,7 @@ import { matchedData, validationResult } from "express-validator"
 import { hashPassword, saveStartupCredentials } from "../services/s-authServices.js"
 import { ValidationError } from "../utils/errors.js"
 import { uploadStartupDetails } from "../services/s-informationServices.js"
-import PartnerDetails from "../model/PartnerDetails"
+import PartnerDetails from "../model/PartnerDetails.js"
 
 export const   PartnerCreateStartupController = async(req,res,next)=>{
   const result  = validationResult(req)
