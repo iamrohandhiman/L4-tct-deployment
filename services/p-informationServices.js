@@ -1,4 +1,4 @@
-import PartnerDetails from "../model/PartnerDetails"
+import PartnerDetails from "../model/PartnerDetails.js"
 
 export const findPartnerSanitised = async(partnerId) =>{
      try{
