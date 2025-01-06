@@ -20,9 +20,9 @@ export const fetchStartupCredentialsEmail = async (data) => {
   try {
     const startup = await StartupCredentials.findOne({ email: data.email });
 
-    if (!startup) {
-      throw new NotFoundError("Startup not found");
-    }
+    // if (!startup) {
+    //   throw new NotFoundError("Startup not found");
+    // }
 
     return startup;
   } catch (error) {

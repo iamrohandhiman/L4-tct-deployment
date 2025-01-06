@@ -2,6 +2,7 @@ import { saveStartupCredentials, hashPassword, generateToken } from "../services
 import { matchedData, validationResult } from "express-validator";
 import { logger } from "../config/logger.js";
 import { ValidationError } from "../utils/errors.js";
+import { fetchInvestorCredentialsEmail } from "../services/i-authServices.js";
 
 export const startupSignupController = async (req, res, next) => {
   try {
@@ -9,6 +10,12 @@ export const startupSignupController = async (req, res, next) => {
     if (result.isEmpty()) {
       const data = matchedData(req);
       data.password = await hashPassword(data.password);
+     
+      const investor = await fetchInvestorCredentialsEmail(data)
+      if(investor){
+        return res.status(409).send({"msg":"email already in use as Investor"})
+      }
+
       const savedData = await saveStartupCredentials(data);
       
       const token = generateToken(savedData._id, "startup");

@@ -29,6 +29,7 @@ import vcDetailsRouter from "./routes/vcDetailsRoute.js"
 import partnerAuthRouter from "./routes/partnerAuthRoutes.js"
 import partnerDetailsRouter from "./routes/partnerInformationRoutes.js"
 import AdminRoutes from "./routes/adminRoutes.js"
+import CommonAuthRoutes from "./routes/commonAuthRoutes.js"
 const app = express();
 
 
@@ -67,6 +68,8 @@ app.use(partnerAuthRouter)
 app.use(partnerDetailsRouter)
 
 app.use(AdminRoutes)
+
+app.use(CommonAuthRoutes)
 
 //error middlewares in-usage
 app.use(entryErrorHandlerMiddleware);

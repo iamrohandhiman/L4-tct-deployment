@@ -37,9 +37,9 @@ export const fetchInvestorCredentialsEmail = async (data) => {
   try {
     const investor = await InvestorCredentials.findOne({ email: data.email });
    
-    if (!investor) {
-      throw new NotFoundError("investor not found");
-    }
+    // if (!investor) {
+    //   throw new NotFoundError("investor not found");
+    // }
 
     return investor;
   } catch (error) {

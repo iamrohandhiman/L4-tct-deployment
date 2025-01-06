@@ -1,4 +1,4 @@
-import { hashPassword } from "../services/s-authServices.js";
+import { fetchStartupCredentialsEmail, hashPassword } from "../services/s-authServices.js";
 import { matchedData,validationResult } from "express-validator";
 import { generateToken } from "../services/s-authServices.js";
 import { ValidationError } from "../utils/errors.js";
@@ -9,7 +9,15 @@ export const investorSignupController=async(req,res,next)=>{
     const result = validationResult(req);
     if (result.isEmpty()) {
       const data = matchedData(req);
+
+       const startup = await fetchStartupCredentialsEmail(data)
+            if(startup){
+              return res.status(409).send({"msg":"email already in use as Startup"})
+            }
+      
       data.password = await hashPassword(data.password);
+
+      
       const savedData = await saveInvestorCredentials(data); //needs to be changed
       
       const token = generateToken(savedData._id, "investor");
