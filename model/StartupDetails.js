@@ -26,6 +26,7 @@ const StartupDetailsSchema = new Schema({
       phoneNo: { type: String, required: true },
       linkedinProfile: { type: String, default: "" },
     },
+    country:{ type: String, default: "" },
     city: { type: String, default: "" },
   },
   cofounders: [
@@ -37,6 +38,7 @@ const StartupDetailsSchema = new Schema({
         phoneNo: { type: String, default: "" },
         linkedinProfile: { type: String, default: "" },
       },
+      country:{ type: String, default: "" },
       city: { type: String, default: "" },
     },
   ],
