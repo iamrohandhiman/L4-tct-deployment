@@ -17,6 +17,7 @@ export const commonLoginController = async (req, res, next) => {
     }
 
     const data = matchedData(req);
+    console.log("okay",data)
     const startupData = await fetchStartupCredentialsPhone(data);
     console.log("startupData",startupData)
     if(startupData){
