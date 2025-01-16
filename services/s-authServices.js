@@ -16,10 +16,12 @@ export const saveStartupCredentials = async (data) => {
   }
 };
 
-export const fetchStartupCredentialsEmail = async (data) => {
-  try {
-    const startup = await StartupCredentials.findOne({ email: data.email });
+export const fetchStartupCredentialsPhone = async (data) => {
+  console.log(data)
 
+  try {
+    const startup = await StartupCredentials.findOne({phoneNumber:"918433754692" });
+    
     // if (!startup) {
     //   throw new NotFoundError("Startup not found");
     // }

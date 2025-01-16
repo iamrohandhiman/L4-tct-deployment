@@ -1,5 +1,5 @@
 import { validationResult, matchedData } from "express-validator";
-import { fetchStartupCredentialsEmail, generateToken } from "../services/s-authServices.js";
+import { fetchStartupCredentialsPhone, generateToken } from "../services/s-authServices.js";
 import { AuthenticationError } from "../utils/errors.js";
 import bcrypt from "bcrypt";
 import { logger } from "../config/logger.js";

@@ -7,6 +7,8 @@ import {signupValidationSchema} from "../schema/s-signupValidation.js"
 import { loginValidationSchema } from "../schema/s-loginValidation.js";
 import { StartupAuthentication } from "../middlewares/s-authentication.js"
 import { body, matchedData, validationResult } from "express-validator";
+import { intitateOTPController } from "../controllers/intitateOTPController.js";
+import { inititateOTPvalidation } from "../schema/intitateOTPvalidation.js";
 const router = express.Router();
 
 router.post(
@@ -14,6 +16,7 @@ router.post(
   signupValidationSchema,
   startupSignupController
 );
+
 
 router.post(
   "/api/v1/startup/login",
@@ -25,6 +28,12 @@ router.post(
 router.post("/api/v1/startup/logout",
   StartupAuthentication,
   startupLogoutController
+)
+
+//inititate OTP
+router.post("/api/v1/req/signup/otp",
+  inititateOTPvalidation, 
+  intitateOTPController
 )
 
 

@@ -1,28 +1,28 @@
 import { validationResult, matchedData } from "express-validator";
-import { fetchStartupCredentialsEmail, generateToken } from "../services/s-authServices.js";
+import { fetchStartupCredentialsPhone, generateToken } from "../services/s-authServices.js";
 import { fetchInvestorCredentialsEmail } from "../services/i-authServices.js";
 import { AuthenticationError } from "../utils/errors.js";
 import bcrypt from "bcrypt";
 import { logger } from "../config/logger.js";
+import { verifyOtp } from "../services/otpLessService.js";
 
 export const commonLoginController = async (req, res, next) => {
   try {
     const result = validationResult(req);
+    console.log(result)
     if (!result.isEmpty()) {
       logger.error("Validation errors", result.errors);
+     
       return next(new AuthenticationError("Validation failed"));
     }
 
     const data = matchedData(req);
-    const startupData = await fetchStartupCredentialsEmail(data);
+    const startupData = await fetchStartupCredentialsPhone(data);
+    console.log("startupData",startupData)
+    if(startupData){
 
-    if (startupData) {
-      const isPasswordMatch = await bcrypt.compare(data.password, startupData.password);
-      
-      if (!isPasswordMatch) {
-        return next (new AuthenticationError("Invalid password"));
-      }
-
+     const Otpresult = await verifyOtp(data.requestId,data.otp)
+    if (Otpresult.isOTPVerified === true) {
       const token = generateToken(startupData._id, "startup");
       res.cookie("token", token, {
         httpOnly: true,
@@ -33,6 +33,7 @@ export const commonLoginController = async (req, res, next) => {
 
       return res.status(200).json({ msg: "Login Successful", userType: "startup" });
     }
+  }
 
     const investorData = await fetchInvestorCredentialsEmail(data.email);
     if (!investorData) {

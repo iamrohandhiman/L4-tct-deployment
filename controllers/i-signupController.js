@@ -1,4 +1,4 @@
-import { fetchStartupCredentialsEmail, hashPassword } from "../services/s-authServices.js";
+import { fetchStartupCredentialsPhone, hashPassword } from "../services/s-authServices.js";
 import { matchedData,validationResult } from "express-validator";
 import { generateToken } from "../services/s-authServices.js";
 import { ValidationError } from "../utils/errors.js";
