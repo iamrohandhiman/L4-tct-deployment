@@ -37,10 +37,10 @@ const app = express();
 dotenv.config();
 app.use(express.json());
 app.use(cors({
-  origin: "*",       
+  origin: ['http://localhost:3000', 'https://l4-tct-deployment.vercel.app'], 
   methods: ["GET", "POST", "PUT", "DELETE", "PATCH"], 
   allowedHeaders: ["Content-Type", "Authorization"], 
-  credentials: true,    
+  credentials: true,  
 }))
 
 //enviornment variables
