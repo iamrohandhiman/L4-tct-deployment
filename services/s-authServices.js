@@ -22,15 +22,16 @@ export const fetchStartupCredentialsPhone = async (data) => {
   try {
     const startup = await StartupCredentials.findOne({phoneNumber:data.phoneNumber});
     
-    // if (!startup) {
-    //   throw new NotFoundError("Startup not found");
-    // }
+      // if (!startup) {
+      //   throw new NotFoundError("Startup not found");
+      // }
 
     return startup;
   } catch (error) {
     console.error("Error fetching startup credentials:", error.message);
     throw new AuthenticationError("Error fetching startup credentials");
   }
+
 };
 
 export const fetchStartupCredentialsId = async (data) => {
