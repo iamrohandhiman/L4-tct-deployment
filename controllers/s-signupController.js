@@ -29,10 +29,11 @@ export const startupSignupController = async (req, res, next) => {
         const token = generateToken(savedData._id, "startup");
         res.cookie("token", token, {
           httpOnly: true,
-          secure: process.env.NODE_ENV === "production",  
-          sameSite: "Strict",  
+          secure: process.env.NODE_ENV === "production",
+          sameSite: "None",
           maxAge: 30 * 24 * 60 * 60 * 1000,
         });
+  
   
         return res.status(201).json({ msg: "signup successful" });
       }
