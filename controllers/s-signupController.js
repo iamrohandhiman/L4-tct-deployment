@@ -4,7 +4,9 @@ import { logger } from "../config/logger.js";
 import { ValidationError } from "../utils/errors.js";
 import { fetchStartupCredentialsPhone } from "../services/s-authServices.js";
 import { verifyOtp } from "../services/otpLessService.js";
+import dotenv from "dotenv"
 
+dotenv.config()
 
 export const startupSignupController = async (req, res, next) => {
   try {
