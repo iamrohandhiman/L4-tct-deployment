@@ -27,7 +27,7 @@ export const commonLoginController = async (req, res, next) => {
       const token = generateToken(startupData._id, "startup");
       res.cookie("token", token, {
         httpOnly: true,
-        secure: process.env.NODE_ENV === "production",
+        secure:true,
         sameSite: "None",
         maxAge: 30 * 24 * 60 * 60 * 1000,
       });
