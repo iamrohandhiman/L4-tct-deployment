@@ -1,7 +1,7 @@
 import { checkSchema } from "express-validator";
 
-const allowedFileNames = ["logo","companyPan", "certificateOfIncorporation", "auditedFinancials","mis","buisnessProjections","capTable","unitEconomics","accountReceivables","GST3B","bankStatements","loanTracker","teamSizeProfiles","addressContract"];
-const allowedTypes = ["logo","document","fundingDocument"];
+const allowedFileNames = ["logo","companyPan", "certificateOfIncorporation", "auditedFinancials","mis","buisnessProjections","capTable","unitEconomics","accountReceivables","GST3B","bankStatements","loanTracker","teamSizeProfiles","addressContract","pitchdeck"];
+const allowedTypes = ["logo","document","fundingDocument","pitchdeck"];
 
 export const validateFileNameSchema = checkSchema({
   fileName: {

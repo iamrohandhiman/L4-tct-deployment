@@ -73,6 +73,11 @@ const StartupDetailsSchema = new Schema({
       type: { type: String, default: "PDF" },
       uploaded: { type: Boolean, default: false },
     },
+    pitchdeck: {
+      key: { type: String, default: "" },
+      type: { type: String, default: "PDF" },
+      uploaded: { type: Boolean, default: false },
+    },
   },
   fundingDocuments: {
     capTable: {
