@@ -4,9 +4,7 @@ import { logger } from "../config/logger.js";
 import { ValidationError } from "../utils/errors.js";
 import { fetchStartupCredentialsPhone } from "../services/s-authServices.js";
 import { verifyOtp } from "../services/otpLessService.js";
-import dotenv from "dotenv"
 
-dotenv.config()
 
 export const startupSignupController = async (req, res, next) => {
   try {
@@ -31,7 +29,7 @@ export const startupSignupController = async (req, res, next) => {
         const token = generateToken(savedData._id, "startup");
         res.cookie("token", token, {
           httpOnly: true,
-          secure: process.env.NODE_ENV === "production",
+          secure: true,
           sameSite: "None",
           maxAge: 30 * 24 * 60 * 60 * 1000,
         });
